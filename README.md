@@ -1,2 +1,2 @@
 # opendoors
-Jobs Listing
+Job Listings
