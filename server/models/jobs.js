@@ -23,19 +23,19 @@ const Benefits = new Schema({
 })
 
 const jobSchema = new Schema({
-  job_title: String,
-  company_name: String,
-  company_log: String,
-  about_company: String,
-  location: String,
+  job_title: { type: String},
+  company_name: { type: String},
+  company_log: { type: String},
+  about_company: { type: String},
+  location: { type: String},
   tech_stack: [TechStack],
   qualifications: [Qualifications],
   bonus_skills: [BonusSkills],
   responsibilities: [Responsibilities],
-  benefits: [Benefits],
-  apply: String,
-  date_posted: String,
-  deadline: String
+  benefits: [Benefits], 
+  apply: { type: String},
+  date_posted: { type: String},
+  deadline: { type: String}
 })
 
 
