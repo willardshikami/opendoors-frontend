@@ -33,6 +33,17 @@ router.post('/submit', (req, res) => {
   });
 })
 
+//get jobs
+router.get('/jobs', (req, res) => {
+  Job.find((error, jobs) => {
+    if(error){
+      console.log(error)
+    }else{
+      res.status(200).send(jobs);
+    }
+  })
+})
+
 
 
 module.exports = router;
