@@ -10,6 +10,6 @@ app.get('/', (req, res) => {
   res.send('You are home')
 });
 
-app.listen(PORT, (req, res) =>{
-  console.log('Server started on port ' + PORT)
-});
+app.listen(process.env.PORT || PORT, () => {
+  console.log('Server started successfully');
+})
