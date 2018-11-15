@@ -9,11 +9,16 @@ import { JobsService } from "../jobs.service";
 })
 export class HomeComponent implements OnInit {
 
+  jobslist: any
+
   constructor(private jobs: JobsService) { }
 
   showJobs(){
     this.jobs.getJobs()
-    .subscribe()
+    .subscribe(
+      data => this.jobslist = data,
+      error => console.log(error)
+    ) 
   }
 
   ngOnInit() {
