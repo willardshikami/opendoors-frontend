@@ -9,10 +9,16 @@ branches:
 addons:
   chrome: stable
 
+env:
+  global:
+  - CC_TEST_REPORTER_ID=263e462f7dbb7956e4d7a48fbc3dc55b80c36cfcf8e28ea6290ff5a0257c2538
+
 before_script:
   - yarn global add @angular/cli
 
 before_install:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
   - pip install --user codecov
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
@@ -29,6 +35,11 @@ script:
   - ng lint
   - ng test --watch=false 
   - ng build --prod
+
+after_script:
+  - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.frontend.json coverage/frontend/lcov.info
+  - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2 
+  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
   
 deploy:
   provider: pages
