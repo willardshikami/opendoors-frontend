@@ -33,7 +33,6 @@ cache:
     - node_modules
 
 script:
-  - nyc --reporter=lcov yarn run unit
   - npm install codecov -g
   - ng lint
   - ng test --watch=false 
