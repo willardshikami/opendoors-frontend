@@ -25,7 +25,7 @@ before_install:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 after_success:
-  - codecov --file coverage/lcov.info --disable search
+  - codecov 
 
 cache:
   npm: true
@@ -40,6 +40,8 @@ script:
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - nyc report --reporter=json > coverage/coverage.json
+
   
 deploy:
   provider: pages
