@@ -1,6 +1,6 @@
 ## opendoors
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/ff7ad95e81c450558fb9/test_coverage)](https://codeclimate.com/github/willardshikami/opendoors-frontend/test_coverage)
+[![codecov](https://codecov.io/gh/willardshikami/opendoors-frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/willardshikami/opendoors-frontend)
 
 [![Build Status](https://travis-ci.com/willardshikami/opendoors-frontend.svg?branch=master)](https://travis-ci.com/willardshikami/opendoors-frontend)
 
