@@ -9,19 +9,11 @@ branches:
 addons:
   chrome: stable
 
-env:
-  global:
-  - CC_TEST_REPORTER_ID=263e462f7dbb7956e4d7a48fbc3dc55b80c36cfcf8e28ea6290ff5a0257c2538
 
 before_script:
   - yarn global add @angular/cli
 
 before_install:
-  - yarn global add nyc
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-  - pip install --user codecov
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 after_success:
@@ -39,8 +31,7 @@ script:
   - ng build --prod
 
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-  - nyc report --reporter=json > coverage/coverage.json
+  - nyc report --reporter=html > coverage/coverage.html
 
   
 deploy:
