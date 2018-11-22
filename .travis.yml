@@ -23,7 +23,7 @@ cache:
   npm: true
   directories:
     - node_modules
-
+    
 script:
   - npm install codecov -g
   - ng lint
